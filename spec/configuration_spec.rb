@@ -1,6 +1,6 @@
 describe 'configuration' do
 
-  let(:keys) { Jawb::Configuration::VALID_CONFIG_KEYS }
+  let(:keys) { Jawb::Configuration::CONFIG_KEYS }
   let(:key) { keys.sample }
 
   after { Jawb.reset }
@@ -12,17 +12,6 @@ describe 'configuration' do
     end
   end
 
-  it 'returns default values' do
-    keys.each do |key|
-      expect(Jawb.send(key)).to eq Jawb::Configuration.const_get("DEFAULT_#{key.upcase}")
-    end
-  end
-
-  describe '#api_key' do
-    it 'should return default key' do
-      expect(Jawb.api_key).to eq Jawb::Configuration::DEFAULT_API_KEY
-    end
-  end
 
   describe '#format' do
     it 'should return default format' do

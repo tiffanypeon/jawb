@@ -4,11 +4,11 @@ module  Jawb
   class Client
     PROMOTABLE_TYPES = [:smart_coupon]
 
-    attr_accessor *Configuration::VALID_CONFIG_KEYS
+    attr_accessor *Configuration.config_keys
 
     def initialize(options={})
       merged_options = Jawb.options.merge(options)
-      Configuration::VALID_CONFIG_KEYS.each do |key|
+      Configuration.config_keys.each do |key|
         send("#{key}=", merged_options[key])
       end
     end
